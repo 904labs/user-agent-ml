@@ -27,9 +27,16 @@ def read(dbfilename):
                 counter += 1
     return samples, vocabulary
 
+def ngrams(text, ngram=3):
+    return map(lambda x: text[x:x+ngram], xrange(len(text)-ngram+1))
+#end of ngrams
+
 
 def gentokenlist(uaString):
     tokenlist = []
+    tokenlist.extend(ngrams(uaString.lower(), 3))
+    tokenlist.extend(ngrams(uaString.lower(), 5))
+    
     for x in re.split('[.(),;/\s]',uaString):
         x = x.strip().rstrip()
         if not x == "":
