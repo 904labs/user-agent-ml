@@ -1,0 +1,11 @@
+# Editor temporaties
+.swp
+.swo
+.*.swp
+.*.swo
+
+*.pyc
+
+# Data files; someone else's copyright
+clf
+conll02/
