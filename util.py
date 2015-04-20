@@ -34,22 +34,20 @@ def ngrams(text, ngram=3):
 
 def gentokenlist(uaString):
     tokenlist = []
-    tokenlist.extend(ngrams(uaString.lower(), 3))
-    tokenlist.extend(ngrams(uaString.lower(), 5))
+    # tokenlist.extend(ngrams(uaString.lower(), 3))
+    # tokenlist.extend(ngrams(uaString.lower(), 5))
     
     for x in re.split('[.(),;/\s]',uaString):
-        x = x.strip().rstrip()
-        if not x == "":
-            # number check            
-            x = rewrite(x)
-            tokenlist.append(x)
-
+        x = x.strip()
+        if x :
+            # number check
+            tokenlist.append(rewrite(x))
     return tokenlist
 
 def rewrite(x): # Performs various token rewrites
 
     # Strip whitespace
-    x = x.strip().rstrip()
+    x = x.strip()
 
     # Rewrite numbers to their length
     if x.isdigit():
