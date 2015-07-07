@@ -15,7 +15,8 @@ uaml.predict("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.
 ```
 The `.predict("user-agent-string")` funtion returns `True` is the user agent
 string is identifed as bot, and `False` is the string is identified as a regular
-browser. 
+browser. The accuracy (measured in F1-score) of the current model is 99.50% (±
+0.0187).
 
 
 ## Acknowledgements
