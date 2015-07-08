@@ -9,7 +9,7 @@ it would have been hard to capture with a solely rule based system.
 ## Usage
 ```python
 import user_agent_ml
-uaml = user_agent_ml.user_agent_ml("../data/user-agent.model")
+uaml = user_agent_ml.user_agent_ml("data/user-agent.model")
 uaml.predict("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12")
 >>> False
 uaml.predict("Mozilla/5.0 (compatible; DotBot/1.1; http://www.opensiteexplorer.org/dotbot, help@moz.com)")
