@@ -2,13 +2,14 @@
 Trains a classifier for identifying bots in user agents.
 
 Usage:
-    train.py [-c [-f N] [-s SCORE]] -o <MODEL> <DATABASE>
+    train.py [-c [-f N] [-s SCORE] [-j JOBS]] -o <MODEL> <DATABASE>
 
 Options:
     -o <MODEL>      Filename of the output trained model.
     -c              Perform N-fold cross validation.
     -f N            Number of folds. [default: 10]
-    -s SCORE        Report on SCORE when doing cross-fold validation. [default: f1]
+    -j JOBS         Number of processes. [default: 5]
+    -s SCORE        Report on SCORE when doing cross-fold validation. [default: f1_weighted]
     -h,--help       Shows usage instructions.
 """
 
@@ -40,8 +41,9 @@ def train(samples, vocabulary):
     clf = RandomForestClassifier(n_estimators=30)
     
     if args["-c"]:
-        logger.debug("Performing N-fold cross-validation (N=%s)" % args["-c"])
+        logger.debug("Performing N-fold cross-validation (N=%s)" % args["-f"])
         scores = cross_validation.cross_val_score(clf, X.toarray(), y,
+                                                    n_jobs=int(args["-j"]),
                                                     cv=int(args["-f"]),
                                                     scoring=args["-s"])
         print("F1: %0.4f (+/- %0.4f)" % (scores.mean(), scores.std() * 2))

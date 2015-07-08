@@ -17,7 +17,7 @@ args = docopt(__doc__)
 def predict(clf, ua, vocabulary):
     """Predict if a patient is diagnosed with a disease."""
 
-    X = extract_features(uahtt, vocabulary)
+    X = extract_features(ua, vocabulary)
     pred = clf.predict(X.toarray())
 
     return X, pred
